@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      padding: 20px;
+      display: block;
+      margin-bottom: 8px;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1><b>Registration Form</b></h1>
+
+  <form onsubmit="return validate()">
+    <fieldset>
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="text" id="email" name="email" placeholder="Enter your email" required><br><br>
+
+      <button type="submit">Register</button>
+    </fieldset>
+  </form>
+
+  <script>
+    function validate() {
+      var name = document.getElementById("name").value.trim();
+      var email = document.getElementById("email").value.trim();
+      
+      var nameval = /^[A-Z][a-zA-Z]*$/;
+      var emailval = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      
+      if (!nameval.test(name)) {
+        alert("Name must start with a capital letter and contain only letters (A–Z, a–z).");
+        return false;
+      }
+      
+      if (!emailval.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      
+      alert("Registration is successful!");
+      return true;
+    }
+  </script>
+</body>
+</html>
+
+
