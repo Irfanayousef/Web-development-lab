@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: lightcoral; 
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      background: #d9f1ff; 
+      padding: 20px;
+      border-radius: 8px;
+      width: 320px;
+      margin-top: 20px;
+    }
+
+    fieldset {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h1><b>Registration Form</b></h1>
+
+  <form onsubmit="return validate()">
+    <fieldset>
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="text" id="email" name="email" placeholder="Enter your email" required><br><br>
+      
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" placeholder="Enter password" required><br><br>
+
+      <label for="confirm_password">Confirm Password:</label><br>
+      <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter password" required><br><br>
+      
+      <label for="phnno">Phone number:</label><br>
+      <input type="tel" id="phnno" name="phnno" placeholder="Enter phone number" required><br><br>
+
+      <center><button type="submit">Register</button></center>
+    </fieldset>
+  </form>
+
+  <script>
+    function validate() {
+      var name = document.getElementById("name").value.trim();
+      var email = document.getElementById("email").value.trim();
+      var password = document.getElementById("password").value.trim();
+      var confirmPass = document.getElementById("confirm_password").value.trim();
+      var phone = document.getElementById("phnno").value.trim();
+      
+      var nameval = /^[A-Z][a-zA-Z]*$/;
+      var emailval = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      var phoneval = /^[0-9]{10}$/;
+      
+    
+      if (!nameval.test(name)) {
+        alert("Name must start with a capital letter and contain only letters (A–Z, a–z).");
+        return false;
+      }
+      
+    
+      if (!emailval.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      
+      
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return false;
+      }
+
+     
+      if (password !== confirmPass) {
+        alert("Passwords do not match. Please re-enter.");
+        return false;
+      }
+
+    
+      if (!phoneval.test(phone)) {
+        alert("Phone number must contain exactly 10 digits.");
+        return false;
+      }
+      
+      alert("Registration is successful!");
+      return true;
+    }
+  </script>
+</body>
+</html>
+
